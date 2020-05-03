@@ -1,0 +1,13 @@
+venv/
+env/
+*.py[cod]
+.idea/
+py36/
+node_modules/
+webpack_bundles/
+bundles/
+webpack-stats.json
+CACHE/
+coverage/
+.coverage
+db.sqlite3

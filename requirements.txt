@@ -1,0 +1,7 @@
+Django==2.2.12
+django-macaddress==1.6.0
+django-countries==5.3.2
+djangorestframework==3.11.0
+django-ipware==2.1.0
+django-webpack-loader==0.7.0
+django-compressor==2.4
