@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
     'rest_framework',
     'webpack_loader',
     'django_countries',
@@ -151,3 +154,7 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
+
+LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1

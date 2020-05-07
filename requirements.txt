@@ -5,3 +5,5 @@ djangorestframework==3.11.0
 django-ipware==2.1.0
 django-webpack-loader==0.7.0
 django-compressor==2.4
+django-allauth==0.38
+

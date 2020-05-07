@@ -22,7 +22,7 @@ class Device(models.Model):
     # maybe list of MACs in case have wifi and wired
     mac_address = MACAddressField(unique=True, help_text='Unique Device MAC address for WIFI network card')
     hardware = models.CharField(choices=HARDWARE_TYPES, max_length=10, default='RP')
-    location = models.CharField(max_length=100, help_text='Device Location')
+    location = models.CharField(max_length=100, help_text='Device Location for weather data, etc')
 
     last_checkin_dt = models.DateTimeField(verbose_name='Last Check-in from device to platform', null=True, blank=True)
 

@@ -1,0 +1,91 @@
+{% extends "account/base.html" %}
+
+{% load i18n widget_tweaks %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column flex-fill justify-content-center align-items-center">
+  <div class="d-flex w-100 align-items-start">
+    <h1 class="p-4 mb-0">{% trans "Sign up to enhance your database and boost your revenue" %}</h1>
+  </div>
+
+
+  <div class="signup-container-gd d-flex flex-column flex-fill w-100 justify-content-center align-items-center">
+
+        <div class="row w-100">
+          <div class="col col-md-12 text-center">
+              <div class="mb-1">{% blocktrans %}Already signed up? <a href="{{ login_url }}">Sign in</a>{% endblocktrans %}</div>
+              <div class="font-italic mb-3 font-gd--sm">{% blocktrans %}Sign up with your email{% endblocktrans %}</div>
+          </div>
+        </div>
+
+        <form class="w-100" id="signup_form" method="post" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+          <!--{{ form.as_p }}-->
+
+          <div class="row w-100">
+
+            <div class="col col-sm-12 col-lg-4 offset-lg-2">
+              {% for field in form.visible_fields %}
+                {% if field.label == 'Your name' or field.label == 'Password' or field.label == "E-mail" or field.label == 'E-mail (again)' or field.label == "Password (again)" %}
+                    <div class="form-group">
+                      <div class="signup-form-gp text-xs-center text-sm-center text-md-center text-lg-left">
+                      <div class="d-inline-block asterisk-holder">
+                        <i class="fas fa-asterisk fa-gd--xs pointer" data-toggle="tooltip" data-placement="top" title="Compulsory field"></i>
+                      </div>
+                        <div class="d-inline-block">
+                            <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
+                            {{ field|add_class:'form-control' }}
+
+                        </div>
+                        {% if field.label == 'Password' %}
+                          <i class="d-inline-block fas fa-info-circle password-info-gd px-1 pointer" data-toggle="tooltip" data-placement="top" title="Your password at minimum needs to be 8 alphanumeric characters long, including at least one number and one alpha character. Please make sure it is sufficiently different from your e-mail."></i>
+                        {% else %}
+                          <i class="d-inline-block fas fa-info-circle password-info-gd px-1 invisible place-holder"></i>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <div class="help-block-gd font-italic font-gd--xs text-left ml-3">{{ error }}</div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            <div class="col col-sm-12 col-lg-4">
+              {% for field in form.visible_fields %}
+                {% if field.label == 'Company name' or field.label == 'Company address line 1' or field.label == "Company address line 2" or field.label == 'Company address line 3' or field.label == "Company country" %}
+                  <div class="form-group">
+                    <div class="signup-form-gp text-xs-center text-sm-center text-md-center text-lg-right">
+                      <div class="d-inline-block asterisk-holder">
+                        <i class="fas fa-asterisk fa-gd--xs invisible place-holder"></i>
+                      </div>
+                      <div class="d-inline-block">
+                          <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
+                          {{ field|add_class:'form-control' }}
+                      </div>
+                      <i class="d-inline-block fas fa-info-circle password-info-gd px-1 invisible place-holder"></i>
+                    {% for error in field.errors %}
+                    <div class="help-block-gd font-italic font-gd--xs text-left ml-3">{{ error }}</div>
+                    {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          </div>
+
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <div class="col-xs-12 text-center">
+            <button class="btn btn-lblue-gd mt-2 mr-sm-3" type="submit">{% trans "Sign Up" %}</button>
+          </div>
+
+        </form>
+  </div>
+</div>
+{% endblock %}

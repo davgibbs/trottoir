@@ -1,17 +1,23 @@
 <template>
   <div>
-    <p>Welcome to the Trottoir Platform</p>
-    <img :src="image">
+    <p>Welcome to the Jol Jardin platform</p>
+    <div>
+      <Devices />
+    </div>
   </div>
 </template>
 <script>
-import footpathImage from '../img/footpath.jpg';
+import joljardinImage from '../img/jol-jardin.png';
+import Devices from './components/Devices.vue';
 
 export default {
   name: 'App',
+  components: {
+    Devices,
+  },
   data() {
     return {
-      image: footpathImage,
+      image: joljardinImage,
     };
   },
 };
