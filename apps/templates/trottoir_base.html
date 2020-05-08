@@ -9,6 +9,24 @@
     <meta name="author" content="Jol Jardin Development Team">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'controls/img/favicons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'controls/img/favicons/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'controls/img/favicons/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'controls/img/favicons/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'controls/img/favicons/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'controls/img/favicons/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'controls/img/favicons/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'controls/img/favicons/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'controls/img/favicons/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'controls/img/favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'controls/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'controls/img/favicons/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'controls/img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'controls/img/favicons/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="{% static 'controls/img/favicons/favicon.ico' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'controls/lib/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'controls/css/joljardin.css' %}" charset="utf-8">
@@ -17,7 +35,7 @@
   <body>
     <div class="navbar flex-column">
       <a class="navbar-brand mx-auto header-logo" href=".">
-        <img src="static/controls/img/jol-jardin-small.png" alt="Jol Jardin Logo">
+        <img src="{% static 'controls/img/jol-jardin-small.png' %}" alt="Jol Jardin Logo">
       </a>
     </div>
       <div class="container">
@@ -29,26 +47,39 @@
               <div id="nav-container">
                 <ul class="navbar-nav ">
                   <li class="nav-item">
-                    <a class="nav-link color-white" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link color-white" href="{% url 'index' %}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link color-white" href="#">About Us</a>
+                    <a class="nav-link color-white" href="{% url 'about' %}">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link color-white" href="#">Login</a>
+                    <a class="nav-link color-white" href="{% url 'app' %}">App</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle color-white" href="#" id=navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                      <span class="glyphicon glyphicon-user"></span> {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a>
+                      <a class="dropdown-item" href="{% url 'admin:index' %}">User admin</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                    </div>
+                  </li>
+                  {% endif %}
                 </ul>
               </div>
           </div>
         </nav>
 
-      Hello there
       {% block content %}{% endblock content %}
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'controls/js/setactive.js' %}"></script>
 
   </body>
 </html>

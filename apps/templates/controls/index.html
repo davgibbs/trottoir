@@ -1,9 +1,46 @@
 {% extends "trottoir_base.html" %}
-
-{% load render_bundle from webpack_loader %}
+{% load i18n static compress %}
 
 {% block content %}
-    <div id="app"></div>
-    {% render_bundle 'vendor' %}
-    {% render_bundle 'app' %}
+<div id="home">
+    <div class="row row-height">
+      <div class="col-sm-5 col-custom pr0">
+        <div class="img-box">
+          <img src="{% static 'controls/img/seedling2_transparent.png' %}" alt="about" class="img-responsive">
+        </div> <!-- end img box -->
+      </div>
+      <div class="col-sm-7 col-custom">
+        <div class="about-text">
+          <p class="demo">Malta 5D is a new generation theatre where you feel the “real” emotions of the movie. In a short time, you may explore the colourful and impressive episodes of the Maltese history and culture, magnified with 3D film, moving seats, water spray, air
+            blasts and leg ticklers. A unique experience for all ages! An exhibition of works by local artists will be on display in the foyer.</p>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+    <div class="row row-height">
+      <div class="col-sm-7 col-custom">
+        <div class="about-text">
+          <p class="demo">Malta 5D is a new generation theatre where you feel the “real” emotions of the movie. In a short time, you may explore the colourful and impressive episodes of the Maltese history and culture, magnified with 3D film, moving seats, water spray, air
+            blasts and leg ticklers. A unique experience for all ages! An exhibition of works by local artists will be on display in the foyer.</p>
+        </div>
+      </div> <!-- end col -->
+      <div class="col-sm-5 col-custom pr0">
+        <div class="img-box">
+          <img src="{% static 'controls/img/seedling3_transparent.png' %}" alt="about" class="img-responsive">
+        </div> <!-- end img box -->
+      </div>
+    </div> <!-- end row -->
+    <div class="row row-height">
+      <div class="col-sm-5 col-custom pr0">
+        <div class="img-box">
+          <img src="{% static 'controls/img/seedling4_transparent.png' %}" alt="about" class="img-responsive">
+        </div> <!-- end img box -->
+      </div>
+      <div class="col-sm-7 col-custom">
+        <div class="about-text">
+          <p class="demo">Malta 5D is a new generation theatre where you feel the “real” emotions of the movie. In a short time, you may explore the colourful and impressive episodes of the Maltese history and culture, magnified with 3D film, moving seats, water spray, air
+            blasts and leg ticklers. A unique experience for all ages! An exhibition of works by local artists will be on display in the foyer.</p>
+        </div>
+      </div> <!-- end col -->
+    </div> <!-- end row -->
+</div>
 {% endblock content %}

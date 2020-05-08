@@ -23,4 +23,6 @@ urlpatterns = [
     path('tro_admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+    path('app/', views.app, name='app'),
 ]
