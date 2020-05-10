@@ -2,6 +2,23 @@
 
 {% block content %}
     <div id="about">
-        About
+        <div>
+        Jol Jardin (Pretty Garden in french) was setup to give you complete control over your garden.
+        </div>
+        <div>
+        Below is a list of Frequently Asked Questions:
+        </div>
+        <div>
+            <h3>General Questions</h3>
+            <h2 class="help_question">What is Jol Jardin?</h2>
+            <p class="help_answer">Jol Jardin is Software as a Service (SaaS) platform which lets our users view, analyse and manage their Garden through control devices.</p>
+        </div>
     </div>
+    <script>
+        $("h2").css("cursor", "pointer");
+
+        $("h2").click(function() {
+            $(this).next("p").slideToggle(200);
+        });
+    </script>
 {% endblock content %}

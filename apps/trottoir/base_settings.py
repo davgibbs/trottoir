@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'profiles',
     'devices',
     'controls',
+    'allauth.socialaccount',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -155,6 +157,6 @@ WEBPACK_LOADER = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/app/accounts/login/'
 
 SITE_ID = 1
