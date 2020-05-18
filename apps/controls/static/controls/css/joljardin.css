@@ -69,9 +69,26 @@
 .img-box img {
   object-fit: cover
 }
-
-
 /* End Home */
+/* Used generally */
+.pointer:hover {
+  cursor: pointer;
+}
+
+.btn-orange-gd {
+  background-color:  rgba(250, 141, 41, 1);
+  color: white;
+  min-width: 100px;
+  border-radius: .35rem;
+}
+
+.btn-green-gd {
+  background-color: rgba(108, 194, 74, 1);
+  color: white;
+  min-width: 100px;
+  border-radius: .35rem;
+}
+/* End used generally */
 
 /* About page */
 #about {

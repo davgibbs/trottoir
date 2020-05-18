@@ -9,23 +9,23 @@ DEBUG = False
 
 PREPEND_WWW = True
 
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-#AWS_STORAGE_BUCKET_NAME = 'myhealthsite'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# AWS_STORAGE_BUCKET_NAME = 'myhealthsite'
 
 # IAM account creation for username 'myhealthsite_aws_s3'
-#AWS_S3_ACCESS_KEY_ID = get_secret("AWS_S3_ACCESS_KEY_ID")
-#AWS_S3_SECRET_ACCESS_KEY = get_secret("AWS_S3_SECRET_ACCESS_KEY")
+# AWS_S3_ACCESS_KEY_ID = get_secret("AWS_S3_ACCESS_KEY_ID")
+# AWS_S3_SECRET_ACCESS_KEY = get_secret("AWS_S3_SECRET_ACCESS_KEY")
 # IAM account creation for username 'myhealthsite_aws_s3_readonly'
-#AWS_S3_ACCESS_KEY_ID_READONLY = get_secret("AWS_S3_ACCESS_KEY_ID_READONLY")
-#AWS_S3_SECRET_ACCESS_KEY_READONLY = get_secret("AWS_S3_SECRET_ACCESS_KEY_READONLY")
-#AWS_S3_SECURE_URLS = True
-#AWS_DEFAULT_ACL = 'private'
+# AWS_S3_ACCESS_KEY_ID_READONLY = get_secret("AWS_S3_ACCESS_KEY_ID_READONLY")
+# AWS_S3_SECRET_ACCESS_KEY_READONLY = get_secret("AWS_S3_SECRET_ACCESS_KEY_READONLY")
+# AWS_S3_SECURE_URLS = True
+# AWS_DEFAULT_ACL = 'private'
 
-#GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-42641358-1'
-#GOOGLE_ANALYTICS_DOMAIN = 'webmyhealth.com'
+# GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-42641358-1'
+# GOOGLE_ANALYTICS_DOMAIN = 'webmyhealth.com'
 
-#AWS_S3_CUSTOM_DOMAIN = 's3-eu-west-1.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
-#MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+# AWS_S3_CUSTOM_DOMAIN = 's3-eu-west-1.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+# MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 
 ALLOWED_HOSTS = ['.joljardin.com', 'www.joljardin.com']
 
@@ -83,17 +83,17 @@ LOGGING = {
 
 # Needed to make source maps when js is compressed
 COMPRESS_OFFLINE = True
-#COMPRESS_JS_COMPRESSOR = 'wmh_common.uglify.JsUglifySourcemapCompressor'
+# COMPRESS_JS_COMPRESSOR = 'wmh_common.uglify.JsUglifySourcemapCompressor'
 
 ##############################################################################################################
 # RAVEN SETTINGS
 ##############################################################################################################
 
-#INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+# INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
-#RAVEN_CONFIG = {
+# RAVEN_CONFIG = {
 #    'dsn': 'https://75e06e8a0a9643f6a25a9714b89e6e89:2c9a3abafbcd4bc88bc34bf20d898141@sentry.io/107261',
-#}
+# }
 
 ###############################################################################################################
 
@@ -107,3 +107,4 @@ COMPRESS_OFFLINE = True
 # SECURE_BROWSER_XSS_FILTER = True
 # SECURE_SSL_REDIRECT = True
 # X_FRAME_OPTIONS = 'DENY'
+

@@ -18,10 +18,14 @@ from django.urls import path, include
 from django.conf.urls import url
 
 from controls import views
+from devices.urls import devices_router
+from controls.urls import controls_router
 
 urlpatterns = [
     path('tro_admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
-    url('^app/', include('controls.urls'))
+    url('^app/', include('controls.urls')),
+    path('devices-api/', include(devices_router.urls)),
+    path('controls-api/', include(controls_router.urls)),
 ]

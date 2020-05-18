@@ -1,7 +1,17 @@
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
 from ipware import get_client_ip
+
+from .serializers import ControlSerializer
+from .models import Control
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -34,3 +44,29 @@ def app(request):
     address_matching_user.last_login_ip = client_ip
     address_matching_user.save(update_fields=['last_login_ip'])
     return render(request, 'controls/app.html', {})
+
+
+class ControlsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows address match users to be viewed or edited.
+    """
+    permission_classes = (permissions.IsAuthenticated, )
+    queryset = Control.objects.all().order_by('created_dt')
+    serializer_class = ControlSerializer
+
+
+@api_view(['POST'])
+@permission_classes((permissions.IsAuthenticated, ))
+def update_state(request):
+    MQTT_TOPIC = 'hello/world'
+    MQTT_HOSTNAME = 'localhost'
+    duration = request.data['duration']
+    control_id = request.data['controlId']
+    logger.info('Turn on control id %s for %s seconds' % (control_id, duration))
+
+    iot_client = MQTTClient(topic=MQTT_TOPIC, hostname=MQTT_HOSTNAME)
+    message = json.dumps({'duration': duration, 'controlId': control_id})
+    client.publish(message)
+
+    return Response(status=status.HTTP_200_OK)
+
