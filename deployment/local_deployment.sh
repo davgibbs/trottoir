@@ -7,7 +7,7 @@ echo ""
 cd /home/ubuntu/trottoir
 git fetch
 git reset --hard origin/master
-sudo git clean -d -x -f -e ve/ -e node_modules/
+sudo git clean -d -x -f -e ve/ -e node_modules/ db.sqlite3
 echo " "
 
 echo "------------------------------------"
