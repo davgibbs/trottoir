@@ -45,17 +45,3 @@ echo ""
 sudo service emperor.uwsgi restart
 echo " "
 
-echo "------------------------------------"
-echo "Restarting Nginx"
-echo "------------------------------------"
-echo ""
-sudo service nginx restart
-echo " "
-
-echo "------------------------------------"
-echo "Restarting Celeryd"
-echo "------------------------------------"
-echo ""
-sudo service celeryd restart
-echo " "
-
