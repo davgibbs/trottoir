@@ -4,7 +4,7 @@ echo "------------------------------------"
 echo "Update repo"
 echo "------------------------------------"
 echo ""
-cd /opt/myhealthsite
+cd /home/ubuntu/trottoir
 git fetch
 git reset --hard origin/master
 sudo git clean -d -x -f -e ve/ -e node_modules/
