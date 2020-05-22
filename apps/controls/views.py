@@ -1,4 +1,5 @@
 import logging
+import json
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -7,11 +8,15 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from ipware import get_client_ip
+import paho.mqtt.client as mqtt
 
 from .serializers import ControlSerializer
 from .models import Control
 
 logger = logging.getLogger(__name__)
+
+MQTT_TOPIC = 'hello/world'
+MQTT_HOSTNAME = 'localhost'
 
 
 def index(request):
@@ -58,15 +63,14 @@ class ControlsViewSet(viewsets.ModelViewSet):
 @api_view(['POST'])
 @permission_classes((permissions.IsAuthenticated, ))
 def update_state(request):
-    MQTT_TOPIC = 'hello/world'
-    MQTT_HOSTNAME = 'localhost'
     duration = request.data['duration']
     control_id = request.data['controlId']
     logger.info('Turn on control id %s for %s seconds' % (control_id, duration))
 
-    iot_client = MQTTClient(topic=MQTT_TOPIC, hostname=MQTT_HOSTNAME)
+    iot_client = mqtt.Client()
+    iot_client.connect(MQTT_HOSTNAME, port=1883, keepalive=60)
     message = json.dumps({'duration': duration, 'controlId': control_id})
-    client.publish(message)
+    iot_client.publish(MQTT_TOPIC, message)
 
     return Response(status=status.HTTP_200_OK)
 

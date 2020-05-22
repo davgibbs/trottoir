@@ -38,7 +38,7 @@ echo "------------------------------------"
 echo "Migrate Apps"
 echo "------------------------------------"
 echo ""
-sudo /home/ubuntu/trottoir/ve/bin/python /home/ubuntu/trottoir/apps/manage.py migrate --settings=trottoir.production_settings
+/home/ubuntu/trottoir/ve/bin/python /home/ubuntu/trottoir/apps/manage.py migrate --settings=trottoir.production_settings
 echo " "
 
 echo "------------------------------------"
