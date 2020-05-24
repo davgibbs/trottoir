@@ -2,7 +2,7 @@
   <div class="d-flex flex-column justify-content-between">
     <Transition name="modal">
       <div class="modal-mask">
-        <div class="modal-wrapper">
+        <div class="modal-container">
           <div class="modal-header">
             <slot name="header">
               Turn on "{{ controlName }}"
@@ -12,13 +12,18 @@
           <div class="modal-body">
             <div class="original-address-row d-flex flex-column">
               <div class="d-flex flex-fill align-items-center pb-1">
-                Duration in seconds:
-                <input v-model="duration">
+                <div v-if="!messageSent">
+                  Duration in seconds:
+                  <input v-model="duration">
+                </div>
+                <div v-if="messageSent">
+                  Command sent
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer text-right">
-            <button type="button" class="btn btn-green-gd" @click="send">
+            <button v-if="!messageSent" type="button" class="btn btn-green-gd" @click="send">
               Send
             </button>
             <button type="button" class="btn btn-orange-gd" @click="close">
@@ -37,6 +42,10 @@ import { turnOnPost } from '../fetch.service';
 export default {
   name: 'Modal',
   props: {
+    deviceId: {
+      default: null,
+      type: Number,
+    },
     controlId: {
       default: null,
       type: Number,
@@ -49,6 +58,7 @@ export default {
   data() {
     return {
       duration: '',
+      messageSent: false,
     };
   },
   methods: {
@@ -56,9 +66,10 @@ export default {
       this.$emit('close');
     },
     send() {
-      turnOnPost({ controlId: this.controlId, duration: this.duration })
-        .then((x) => {
-          console.log(x);
+      turnOnPost({ deviceId: this.deviceId, controlId: this.controlId, duration: this.duration })
+        .then(() => {
+          console.log('command sent');
+          this.messageSent = true;
         })
         .catch((err) => {
           console.log(err);
@@ -81,18 +92,8 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-.modal-wrapper {
-  position: relative;
-  max-height: 700px;
-  margin: 30px 80px;
-  border-radius: .3rem;
-  background: white;
-  max-width: 500px;
-
-}
-
 .modal-container {
-  width: 300px;
+  max-width: 500px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;

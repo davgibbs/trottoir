@@ -64,7 +64,8 @@ export default {
         });
     },
     openModal(control) {
-      this.controlId = control.id;
+      this.deviceId = control.id;
+      this.controlId = control.pin_number;
       this.controlName = control.name;
       this.showModal = true;
     },
